@@ -3,68 +3,65 @@ const contactsContainerElement = document.getElementById("contacts-container");
 
 function renderContacts() {
   const contacts = loadContacts();
-
-  const queryString = window.location.search;
-  const params = new URLSearchParams(queryString);
-  const keyword = params.get("q");
-
+  const keyword = new URLSearchParams(window.location.search).get("q");
   const contactsToRender = keyword
     ? searchContacts(contacts, keyword)
     : contacts;
 
-  const contactItemElements = contactsToRender.map(
-    (contact) => `<li>
-  <a href="/contact/?id=${contact.id}">
-    <h2>${contact.fullName}</h2>
-    <p>${contact.email}</p>
-    <p>${contact.phone}</p>
-    <p>${contact.birthday}</p>
-  </a>
-  <div>
-    <button onclick="deleteContactById(${contact.id})">Delete</button>
-  </div>
-</li>
-`
-  );
-
-  const contactItems = contactItemElements.join("");
-  contactsContainerElement.innerHTML = contactItems;
+  contactsContainerElement.innerHTML = contactsToRender
+    .map(
+      (contact) => `
+    <li>
+      <a href="/contact/?id=${contact.id}">
+        <h2>${contact.fullName}</h2>
+        <p>${contact.email}</p>
+        <p>${contact.phone}</p>
+        <p>${contact.birthday}</p>
+      </a>
+      <div>
+        <button onclick="deleteContactById(${contact.id})">Delete</button>
+      </div>
+    </li>
+  `
+    )
+    .join("");
 }
 
 function addContact(event) {
   event.preventDefault();
 
   const contactFormData = new FormData(addContactFormElement);
-  console.log(contactFormData);
-
   const contacts = loadContacts();
 
-  const newId = contacts.length ? contacts[contacts.length - 1].id + 1 : 1;
-
   const newContact = {
+    id: contacts.length ? contacts[contacts.length - 1].id + 1 : 1,
     fullName: contactFormData.get("fullName"),
     email: contactFormData.get("email"),
     phone: contactFormData.get("phone"),
     birthday: contactFormData.get("birthday"),
   };
-  const updatedContacts = [...contacts, newContact];
-  saveContacts(updatedContacts);
 
+  saveContacts([...contacts, newContact]);
   addContactFormElement.reset();
   renderContacts();
 }
 
 function deleteContactById(id) {
   const contacts = loadContacts();
-
-  const updatedContacts = contacts.filter(
-    (contact) => contact.id !== Number(id)
-  );
+  const updatedContacts = contacts.filter((contact) => contact.id !== id);
 
   saveContacts(updatedContacts);
   renderContacts();
 }
 
-addContactFormElement.addEventListener("submit", addContact);
+function searchContacts(contacts, keyword) {
+  return contacts.filter(
+    (contact) =>
+      contact.fullName.toLowerCase().includes(keyword.toLowerCase()) ||
+      contact.email.toLowerCase().includes(keyword.toLowerCase()) ||
+      contact.phone.toLowerCase().includes(keyword.toLowerCase())
+  );
+}
 
+addContactFormElement.addEventListener("submit", addContact);
 window.addEventListener("load", renderContacts);

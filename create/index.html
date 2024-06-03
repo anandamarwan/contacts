@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Contact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <header class="ml-20 mt-4">
+      <a href="/index.html" class="text-2xl">Contacts</a>
+    </header>
+
+    <div class="m-10 flex justify-center">
+      <main class="w-full max-w-sm gap-1">
+        <section>
+          <form id="add-contact-form" method="post" class="space-y-4">
+            <div class="flex justify-between">
+              <div class="text-2xl">
+                <a href="/">←</a>
+              </div>
+              <button
+                type="submit"
+                class="p-2.5 bg-blue-700 hover:bg-blue-500 text-white rounded-full"
+                aria-label="Save Contact"
+              >
+                Save
+              </button>
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="full-name">Full Name</label>
+              <input
+                type="text"
+                id="full-name"
+                name="fullName"
+                class="border border-solid border-stone-700 rounded p-2"
+                required
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="border border-solid border-stone-700 rounded p-2"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="phone">Phone</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                class="border border-solid border-stone-700 rounded p-2"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1">
+              <label for="birthday">Birthday:</label>
+              <input
+                type="date"
+                id="birthday"
+                name="birthday"
+                class="border border-solid border-stone-700 rounded p-2"
+              />
+            </div>
+          </form>
+        </section>
+
+        <ul id="contacts-container">
+          <!-- Contacts Data -->
+        </ul>
+      </main>
+    </div>
+
+    <script src="/storage.js"></script>
+    <script src="/index.js"></script>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+// storage.js
+
 function saveContacts(contacts) {
   localStorage.setItem("contacts", JSON.stringify(contacts));
 }
