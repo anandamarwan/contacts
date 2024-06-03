@@ -1,5 +1,6 @@
-const addContactFormElement = document.getElementById("add-contact-form");
 const contactsContainerElement = document.getElementById("contacts-container");
+
+window.addEventListener("load", renderContacts);
 
 function renderContacts() {
   const contacts = loadContacts();
@@ -12,12 +13,10 @@ function renderContacts() {
     .map(
       (contact) => `
     <li>
-      <a href="/contact/?id=${contact.id}">
-        <h2>${contact.fullName}</h2>
-        <p>${contact.email}</p>
-        <p>${contact.phone}</p>
-        <p>${contact.birthday}</p>
-      </a>
+      <h2>${contact.fullName}</h2>
+      <p>${contact.email}</p>
+      <p>${contact.phone}</p>
+      <p>${contact.birthday}</p>
       <div>
         <button onclick="deleteContactById(${contact.id})">Delete</button>
       </div>
@@ -25,25 +24,6 @@ function renderContacts() {
   `
     )
     .join("");
-}
-
-function addContact(event) {
-  event.preventDefault();
-
-  const contactFormData = new FormData(addContactFormElement);
-  const contacts = loadContacts();
-
-  const newContact = {
-    id: contacts.length ? contacts[contacts.length - 1].id + 1 : 1,
-    fullName: contactFormData.get("fullName"),
-    email: contactFormData.get("email"),
-    phone: contactFormData.get("phone"),
-    birthday: contactFormData.get("birthday"),
-  };
-
-  saveContacts([...contacts, newContact]);
-  addContactFormElement.reset();
-  renderContacts();
 }
 
 function deleteContactById(id) {
@@ -62,6 +42,3 @@ function searchContacts(contacts, keyword) {
       contact.phone.toLowerCase().includes(keyword.toLowerCase())
   );
 }
-
-addContactFormElement.addEventListener("submit", addContact);
-window.addEventListener("load", renderContacts);

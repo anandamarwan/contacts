@@ -7,10 +7,10 @@
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
-  <body>
+  <body class="bg-gray-200">
     <div class="flex flex-row">
       <aside id="left-sidebar" class="max-w-80 max-h-full">
-        <section class="bg-gray-50 p-2">
+        <section class="p-2">
           <div
             class="m-10 p-3 w-44 bg-sky-200 hover:bg-sky-300 text-black rounded-lg"
           >
@@ -24,22 +24,27 @@
         </section>
       </aside>
 
-      <aside id="top-bar" class="flex flex-col">
-        <div class="p-2">
-          <form id="search-contacts" method="get">
-            <input
-              id="search-input"
-              type="text"
-              name="q"
-              placeholder="Search"
-              class="bg-gray-100 w-96 p-4 rounded-lg"
-              aria-label="Search contacts"
-            />
-            <button type="submit" class="p-2 bg-blue-500 text-white rounded-lg">
-              Search
-            </button>
-          </form>
-        </div>
+      <main>
+        <aside id="top-bar" class="flex flex-col">
+          <div class="p-2">
+            <form id="search-contacts" method="get">
+              <input
+                id="search-input"
+                type="text"
+                name="q"
+                placeholder="Search"
+                class="bg-gray-100 w-96 p-4 rounded-lg"
+                aria-label="Search contacts"
+              />
+              <button
+                type="submit"
+                class="p-2 bg-blue-500 text-white rounded-lg"
+              >
+                Search
+              </button>
+            </form>
+          </div>
+        </aside>
 
         <section class="p-8">
           <header>
@@ -59,13 +64,13 @@
           </div>
 
           <hr />
-        </section>
-      </aside>
-    </div>
 
-    <ul id="contacts-container" class="p-4">
-      <!-- Contacts Data -->
-    </ul>
+          <ul id="contacts-container" class="p-4 bg-white">
+            <!-- Contacts Data -->
+          </ul>
+        </section>
+      </main>
+    </div>
 
     <script src="/storage.js"></script>
     <script src="/index.js"></script>
