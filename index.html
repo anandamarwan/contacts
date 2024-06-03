@@ -8,8 +8,8 @@
   </head>
   <body>
     <div class="flex flex-row">
-      <main class="max-w-80 max-h-full">
-        <div class="bg-gray-50 p-2">
+      <aside id="left-sidebar" class="max-w-80 max-h-full">
+        <section class="bg-gray-50 p-2">
           <div
             class="m-10 p-3 w-44 bg-sky-200 hover:bg-sky-300 text-black rounded-lg"
           >
@@ -20,9 +20,10 @@
           >
             <h1>Contacts</h1>
           </div>
-        </div>
-      </main>
-      <div class="flex flex-col">
+        </section>
+      </aside>
+
+      <aside id="top-bar" class="flex flex-col">
         <div class="p-2">
           <form id="search-contacts" method="get">
             <input
@@ -31,35 +32,41 @@
               name="q"
               placeholder="Search"
               class="bg-gray-100 w-96 p-4 rounded-lg"
+              aria-label="Search contacts"
             />
-            <button type="submit">Search</button>
+            <button type="submit" class="p-2 bg-blue-500 text-white rounded-lg">
+              Search
+            </button>
           </form>
         </div>
-        <div class="p-8">
-          <div>
+
+        <section class="p-8">
+          <header>
             <h1 class="text-2xl">Contacts</h1>
-          </div>
+          </header>
+
           <div class="flex flex-row gap-10">
             <div>
-              <h1>Name</h1>
+              <h2 class="text-lg">Name</h2>
             </div>
             <div>
-              <h1>Email</h1>
+              <h2 class="text-lg">Email</h2>
             </div>
             <div>
-              <h1>Phone Number</h1>
+              <h2 class="text-lg">Phone Number</h2>
             </div>
           </div>
+
           <hr />
-        </div>
-      </div>
+        </section>
+      </aside>
     </div>
 
-    <ul id="contacts-container">
+    <ul id="contacts-container" class="p-4">
       <!-- Contacts Data -->
     </ul>
 
-    <script src="/index.js"></script>
     <script src="/storage.js"></script>
+    <script src="/index.js"></script>
   </body>
 </html>
