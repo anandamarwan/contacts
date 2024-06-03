@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacts</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <div class="flex flex-row">
+      <main class="max-w-80 max-h-full">
+        <div class="bg-gray-50 p-2">
+          <div
+            class="m-10 p-3 w-44 bg-sky-200 hover:bg-sky-300 text-black rounded-lg"
+          >
+            <a href="/contacts/createcontact.html">+ Create contact</a>
+          </div>
+          <div
+            class="m-10 p-3 max-w-64 bg-sky-200 hover:bg-sky-300 text-black font-bold rounded-full"
+          >
+            <h1>Contacts</h1>
+          </div>
+        </div>
+      </main>
+      <div class="flex flex-col">
+        <div class="p-2">
+          <form id="search-contacts" method="get">
+            <input
+              id="search-input"
+              type="text"
+              name="q"
+              placeholder="Search"
+              class="bg-gray-100 w-96 p-4 rounded-lg"
+            />
+            <button type="submit">Search</button>
+          </form>
+        </div>
+        <div class="p-8">
+          <div>
+            <h1 class="text-2xl">Contacts</h1>
+          </div>
+          <div class="flex flex-row gap-10">
+            <div>
+              <h1>Name</h1>
+            </div>
+            <div>
+              <h1>Email</h1>
+            </div>
+            <div>
+              <h1>Phone Number</h1>
+            </div>
+          </div>
+          <hr />
+        </div>
+      </div>
+    </div>
+
+    <ul id="contacts-container">
+      <!-- Contacts Data -->
+    </ul>
+
+    <script src="/index.js"></script>
+    <script src="/storage.js"></script>
+  </body>
+</html>
