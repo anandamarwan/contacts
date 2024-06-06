@@ -13,13 +13,11 @@ function renderContacts() {
     .map(
       (contact) => `
     <li>
-      <h2>${contact.fullName}</h2>
-      <p>${contact.email}</p>
-      <p>${contact.phone}</p>
-      <p>${contact.birthday}</p>
-      <div>
-        <button onclick="deleteContactById(${contact.id})">Delete</button>
-      </div>
+    <a href="/contact/?id=${contact.id}">
+    <div class="flex flex-row gap-20">
+    <h2>${contact.fullName}</h2>
+    <p>${contact.email}</p>
+    </div>
     </li>
   `
     )
