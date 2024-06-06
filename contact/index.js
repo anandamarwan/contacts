@@ -43,6 +43,9 @@ function renderEditContactFormById(id) {
 
   contactContainerElement.innerHTML = `
 <form id="edit-contact-form" method="post">
+<div class="flex justify-end">
+<button type="submit" class="p-2.5 bg-blue-700 hover:bg-blue-500 text-white rounded-full">Save</button>
+</div>
   <div>
     <label for="full-name">Full Name</label>
     <input
@@ -77,7 +80,7 @@ function renderEditContactFormById(id) {
     class="bg-gray-100 w-96 p-4 rounded-lg"
     value="${contact.birthday}" />
   </div>
-  <button type="submit" class="p-2.5 bg-blue-700 hover:bg-blue-500 text-white rounded-full">Save</button>
+  
 </form>`;
 
   const editContactFormElement = document.getElementById("edit-contact-form");
