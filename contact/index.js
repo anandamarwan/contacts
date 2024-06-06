@@ -27,7 +27,7 @@ function renderContactById() {
   <button onclick="deleteContactById(${contact.id})">🗑️</button>
   </div>
   <h2 class="text-3xl">${contact.fullName}</h2>
-  <div class="p-4 bg-gray-400 rounded-lg">
+  <div class="p-2 bg-gray-400 rounded-lg text-sm">
   <h3>Contacts details</h3>
   <p>✉︎ ${contact.email}</p>
   <p>☎️ ${contact.phone}</p>

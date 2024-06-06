@@ -14,7 +14,7 @@ function renderContacts() {
       (contact) => `
     <li>
     <a href="/contact/?id=${contact.id}">
-    <div class="flex flex-row gap-20">
+    <div class="flex flex-row gap-20 hover:bg-sky-100 p-3">
     <h2>${contact.fullName}</h2>
     <p>${contact.email}</p>
     </div>
